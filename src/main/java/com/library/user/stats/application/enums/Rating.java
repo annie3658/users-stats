@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Rating {
-    ONE (1),
-    TWO (2),
-    THREE (3),
-    FOUR (4),
-    FIVE (5);
+    ONE (1d),
+    TWO (2d),
+    THREE (3d),
+    FOUR (4d),
+    FIVE (5d);
 
-    private int value;
+    private Double value;
     private static Map map = new HashMap<>();
 
-    private Rating(int value) {
+    private Rating(Double value) {
         this.value = value;
     }
 
@@ -27,7 +27,7 @@ public enum Rating {
         return (Rating) map.get(rating);
     }
 
-    public int getValue() {
+    public Double getValue() {
         return value;
     }
 

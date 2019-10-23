@@ -1,7 +1,7 @@
 package com.library.user.stats.application.controller;
 
+import com.library.user.stats.application.dto.BookDTO;
 import com.library.user.stats.application.dto.UserStatsDTO;
-import com.library.user.stats.application.entity.UserStats;
 import com.library.user.stats.application.service.UserStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +20,23 @@ public class UserStatsController {
     }
 
     @GetMapping
-    public List<UserStatsDTO> getAllCovers(){
+    public List<UserStatsDTO> getAllStats(){
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public UserStatsDTO getUserStatsById(@PathVariable("id") String id){
-        return service.findUserStatsById(id);
+    public List<UserStatsDTO> getUserStatsByUserId(@PathVariable("id") String id){
+        return service.findUserStatsByUserId(id);
+    }
+
+    @GetMapping("/book/{id}")
+    public List<UserStatsDTO> getUserStatsByBookId(@PathVariable("id") String id){
+        return service.findUserStatsByBookId(id);
+    }
+
+    @GetMapping("/bookById/{id}")
+    public BookDTO getBookById(@PathVariable("id") String id){
+        return service.getBookById(id);
     }
 
     @PutMapping
